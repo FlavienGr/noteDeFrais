@@ -20,6 +20,7 @@ namespace notedefrais
             this.DateNoteFrais = dateNoteFrais;
             this.AgentCommercial = c;
             this.Number = 1;
+
             this.SetNoteInCommercial();
         }
         public void SetMontantARembourser()
