@@ -6,13 +6,13 @@ namespace notedefrais
 {
     public interface ICommercial
     {
-        public string Name { get; set; }
-        public string Firstname { get; set; }
+        string Name { get; set; }
+        string Firstname { get; set; }
 
-        public int Powercar { get; set; }
+        int Powercar { get; set; }
 
-        public char Category { get; set; }
-
+        char Category { get; set; }
+        List<INote> Notes { get; set; }
         public List<INote> GetNoteDeFrais();
         void AjouterNoteFrais(Note notedefrais);
         void ToString();

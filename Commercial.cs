@@ -6,7 +6,7 @@ using System.Text;
 namespace notedefrais
 {
     
-    class Commercial
+    public class Commercial: ICommercial
     {
         public string Name { get; set; }
         public string Firstname { get; set; }
@@ -15,13 +15,14 @@ namespace notedefrais
 
         public char Category { get; set; }
 
-        List<INote> Notes { get; set; }
+        public List<INote> Notes { get; set; }
         public Commercial(string name, string firstname, int powerCar, char category)
         {
             Name = name;
             Firstname = firstname;
             Powercar = powerCar;
             Category = category;
+            Notes = new List<INote>();
         }
         public void AjouterNoteFrais(Note notedefrais)
         {

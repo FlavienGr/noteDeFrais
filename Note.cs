@@ -33,6 +33,7 @@ namespace notedefrais
         private void SetNoteInCommercial()
         {
             AgentCommercial.AjouterNoteFrais(this);
+            Number = AgentCommercial.GetNoteDeFrais().Count + 1;
         }
         public void SetGiveMoneyBack()
         {
