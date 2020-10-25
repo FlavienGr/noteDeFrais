@@ -4,6 +4,7 @@ using System.Text;
 
 namespace notedefrais
 {
+    [Serializable]
     public class ServiceCommercial
     {
         public List<ICommercial> Commercials;
@@ -14,6 +15,18 @@ namespace notedefrais
         public void AjouterCommercial(ICommercial commercial)
         {
             Commercials.Add(commercial);
+        }
+        public void AjouterNote(ICommercial commercial, DateTime date, int distance)
+        {
+            new FraisTransport(date,commercial, distance);
+        }
+        public void AjouterNote(ICommercial commercial, DateTime date, double amount)
+        {
+            new RepasMidi(date, commercial, amount);
+        }
+        public void AjouterNote(ICommercial commercial, DateTime date, double amount, int region)
+        {
+            new FraisNuite(date, commercial, amount, region);
         }
         public int NombreFraisNonRembourser()
         {

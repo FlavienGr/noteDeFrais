@@ -32,5 +32,18 @@ namespace NoteTests
             noteFive.SetGiveMoneyBack();
             Assert.AreEqual(2, sc.NombreFraisNonRembourser());
         }
+        [TestMethod]
+        public void Ajouter_Note_To_Commercial()
+        {
+            ServiceCommercial sc = new ServiceCommercial();
+            ICommercial commercial = new Commercial("Alan", "Bod", 8, 'A');
+            sc.AjouterCommercial(commercial);
+
+            sc.AjouterNote(commercial, new DateTime(2020, 10, 22), 250);
+            sc.AjouterNote(commercial, new DateTime(2020, 10, 22), 35d);
+            sc.AjouterNote(commercial, new DateTime(2020, 10, 22), 80, 2);
+
+            Assert.AreEqual(3, commercial.GetNoteDeFrais().Count);
+        }
     }
 }

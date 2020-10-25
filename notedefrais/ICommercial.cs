@@ -15,6 +15,8 @@ namespace notedefrais
         List<INote> Notes { get; set; }
         public List<INote> GetNoteDeFrais();
         void AjouterNoteFrais(Note notedefrais);
+
+        int GetNoteDeFraisRembourseForAYear(int year);
         void ToString();
     }
 }

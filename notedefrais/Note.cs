@@ -4,6 +4,7 @@ using System.Text;
 
 namespace notedefrais
 {
+    [Serializable]
     public class Note : INote
     {
         public ICommercial AgentCommercial { get; set; }
@@ -11,7 +12,7 @@ namespace notedefrais
         public bool Rembourse { get; set; }
         public int Number { get; set; }
 
-        DateTime DateNoteFrais { get; set; }
+        public DateTime DateNoteFrais { get; set; }
 
         
         public Note(DateTime dateNoteFrais, ICommercial c)
@@ -19,7 +20,7 @@ namespace notedefrais
             this.Rembourse = false;
             this.DateNoteFrais = dateNoteFrais;
             this.AgentCommercial = c;
-            this.Number = 1;
+            
 
             this.SetNoteInCommercial();
         }
@@ -33,15 +34,19 @@ namespace notedefrais
         private void SetNoteInCommercial()
         {
             AgentCommercial.AjouterNoteFrais(this);
-            Number = AgentCommercial.GetNoteDeFrais().Count + 1;
+            Number = AgentCommercial.GetNoteDeFrais().Count;
         }
         public void SetGiveMoneyBack()
         {
             this.Rembourse = true;
         }
-        private int GetNumber()
+        public int GetNumber()
         {
             return Number;
+        }
+        public decimal GetMontantARembourser()
+        {
+            return this.MontantARembourser;
         }
         virtual public void ToString()
         {

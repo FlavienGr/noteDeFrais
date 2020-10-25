@@ -5,7 +5,7 @@ using System.Text;
 
 namespace notedefrais
 {
-    
+    [Serializable]
     public class Commercial: ICommercial
     {
         public string Name { get; set; }
@@ -31,6 +31,16 @@ namespace notedefrais
         public List<INote> GetNoteDeFrais()
         {
             return Notes;
+        }
+        public int GetNoteDeFraisRembourseForAYear(int year)
+        {
+            int number = 0;
+            foreach (INote note in Notes)
+            {
+                if (note.Rembourse && note.DateNoteFrais.Year == year)
+                    number++;
+            }
+            return number;
         }
         virtual public void ToString()
         {
