@@ -17,12 +17,15 @@ namespace notedefrais
             FileStream file = new FileStream(fileName, FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, sc);
+            file.Close();
         }
         static public ServiceCommercial Charge(string fileName)
         {
             FileStream file = new FileStream(fileName, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
-            return (ServiceCommercial)bf.Deserialize(file);
+            var fileLoaded = (ServiceCommercial)bf.Deserialize(file);
+            file.Close();
+            return fileLoaded;
         }
     }
 }
